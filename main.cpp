@@ -34,4 +34,14 @@ int main (){
     cout << "Netral : " << setprecision(2) << proses.termaKeasamanNetral << endl;
     cout << "Basa : " << setprecision(2) << proses.termaKeasamanBasa << endl << endl;
 
+    cout << "\n===== Step 2 : Inferensi =====" << endl;
+    proses.inferensi();
+
+    if(proses.termaOutputKurangSubur > 0){
+        cout << "\nNilai output terma kurang subur adalah " << proses.termaOutputKurangSubur << endl;
+    }
+
+    if(proses.termaOutputSubur > 0){
+        cout << "Nilai output terma subur adalah " << proses.termaOutputSubur << endl;
+    }
 }
