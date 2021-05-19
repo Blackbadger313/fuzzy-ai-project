@@ -1,6 +1,5 @@
 #include <iostream>
 #include "rumusFungsi.h"
-#include <iomanip>
 
 using namespace std;
 
@@ -10,6 +9,7 @@ public:
     float termaKelembabanKering = 0, termaKelembabanLembab = 0, termaKelembabanBasah = 0;
     float termaKeasamanAsam = 0, termaKeasamanNetral = 0, termaKeasamanBasa = 0;
     float termaOutputSubur = 0, termaOutputKurangSubur = 0;
+    float result, resultPembilang = 0, resultPenyebut = 0;
     float nilaiHasilRule[27];
     string kondisiHasilRule[27];
 
@@ -291,16 +291,7 @@ public:
     }
 
     void defuzzifikasi(int banyakSample){
-        /*
-        float hasilPembilang = 0, hasilPenyebut = 0, hasilDefuzzifikasi;
-        float termaOutputTengah[100], titikSampleTengah[100];
-        int sampleCountSubur = 0, sampleCountKurangSubur = 0, titikSample = 0, delta = 0;
-        */
-        float result;
-
-        centroidMethodMamdani(banyakSample, termaOutputSubur, termaOutputKurangSubur, &result);
-
-        cout << result;
+        centroidMethodMamdani(banyakSample, termaOutputSubur, termaOutputKurangSubur, &result, &resultPembilang, &resultPenyebut);
 
     }
 };

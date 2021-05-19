@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <iomanip>
 #include "D:\Github\AI\fuzzy-ai-project\src\fuzzyLogic.h"
 
 using namespace std;
@@ -46,5 +47,11 @@ int main (){
     }
 
     cout << "\n===== Step 3 : Defuzzifikasi =====" << endl;
-    proses.defuzzifikasi(10);
+    cout << "Masukan banyak titik sampel yang di inginkan : "; cin >> sample;
+
+    proses.defuzzifikasi(sample);
+
+    cout << "\nNilai Pembilang : " << to_string(proses.resultPembilang) << endl
+    << "Nilai Penyebut : " << proses.resultPenyebut << endl
+    << "Nilai Kesuburan Tanah : " << proses.result << endl;
 }

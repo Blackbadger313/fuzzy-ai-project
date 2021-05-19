@@ -1,5 +1,3 @@
-#include <iostream>
-#include <iomanip>
 using namespace std;
 void segitigaKiri(float a, float b, float x, float *result){
     *result = (x - a) / (b - a);
@@ -17,8 +15,7 @@ void trapesiumKanan(float d, float c, float x, float *result){
     *result = (d - x) / (d - c);
 }
 
-void centroidMethodMamdani(int banyakSample, float pengaliSubur, float pengaliKurangSubur, float *hasilDefuzzifikasi){
-    float hasilPembilang = 0, hasilPenyebut = 0;
+void centroidMethodMamdani(int banyakSample, float pengaliSubur, float pengaliKurangSubur, float *hasilDefuzzifikasi, float *hasilPembilang, float *hasilPenyebut){
     float pengaliTengah[100], titikSampleTengah[100];
     int sampleCountSubur = 0, sampleCountKurangSubur = 0, titikSample = 0, delta = 0;
     int tempCount = 0;
@@ -29,12 +26,12 @@ void centroidMethodMamdani(int banyakSample, float pengaliSubur, float pengaliKu
     for(int i = 0; i < banyakSample; i++){
         if(titikSample <= 50){
             //termaOutputKurangSubur
-            hasilPembilang += titikSample * pengaliKurangSubur;
+            *hasilPembilang += titikSample * pengaliKurangSubur;
             sampleCountKurangSubur += 1;
 
         }else if(titikSample >= 60){
             //termaOutputSubur
-            hasilPembilang += titikSample * pengaliSubur;
+            *hasilPembilang += titikSample * pengaliSubur;
             sampleCountSubur += 1;
 
         }else if(titikSample > 50 && titikSample < 60){
@@ -42,25 +39,24 @@ void centroidMethodMamdani(int banyakSample, float pengaliSubur, float pengaliKu
             if(pengaliKurangSubur > pengaliSubur){
                 titikSampleTengah[tempCount] = titikSample;
                 trapesiumKanan(60, 50, titikSampleTengah[tempCount], &pengaliTengah[tempCount]);
-                hasilPembilang += titikSampleTengah[tempCount] * pengaliTengah[tempCount];
+                *hasilPembilang += titikSampleTengah[tempCount] * pengaliTengah[tempCount];
 
             }else{
                 titikSampleTengah[tempCount] = titikSample;
                 trapesiumKiri(50, 60, titikSampleTengah[tempCount], &pengaliTengah[tempCount]);
-                hasilPembilang += titikSampleTengah[tempCount] * pengaliTengah[tempCount];
+                *hasilPembilang += titikSampleTengah[tempCount] * pengaliTengah[tempCount];
 
             }
             tempCount += 1;
 
         }
         titikSample += delta;
-        //cout << "\nIni hasil tst:" <<  titikSample*pengaliKurangSubur << endl << titikSample << " " << hasilPembilang << " " <<endl;
+
     }
 
-    hasilPenyebut = (sampleCountSubur * pengaliSubur) + (sampleCountKurangSubur * pengaliKurangSubur);
+    *hasilPenyebut = (sampleCountSubur * pengaliSubur) + (sampleCountKurangSubur * pengaliKurangSubur);
     for(int i = 0; i < tempCount; i++){
-        hasilPenyebut += pengaliTengah[i];
+        *hasilPenyebut += pengaliTengah[i];
     }
-    cout << endl << hasilPembilang << endl << hasilPenyebut << endl;
-    *hasilDefuzzifikasi = hasilPembilang / hasilPenyebut;
+    *hasilDefuzzifikasi = *hasilPembilang / *hasilPenyebut;
 }
