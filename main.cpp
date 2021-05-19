@@ -44,4 +44,7 @@ int main (){
     if(proses.termaOutputSubur > 0){
         cout << "Nilai output terma subur adalah " << proses.termaOutputSubur << endl;
     }
+
+    cout << "\n===== Step 3 : Defuzzifikasi =====" << endl;
+    proses.defuzzifikasi(10);
 }
