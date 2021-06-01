@@ -9,9 +9,9 @@ public:
     float termaKelembabanKering = 0, termaKelembabanLembab = 0, termaKelembabanBasah = 0;
     float termaKeasamanAsam = 0, termaKeasamanNetral = 0, termaKeasamanBasa = 0;
     float termaOutputSubur = 0, termaOutputKurangSubur = 0;
-    float result, resultPembilang = 0, resultPenyebut = 0;
-    float nilaiHasilRule[27];
-    string kondisiHasilRule[27];
+    float result = 0, resultPembilang = 0, resultPenyebut = 0;
+    float nilaiHasilRule[27] = {};
+    string kondisiHasilRule[27] = {};
 
 public:
     void derajatAnggotaSuhu(float inputSuhu){
@@ -256,7 +256,7 @@ public:
                             }
                         }
 
-                        cout << rulesCount+1 <<".IF KELEMBABAN = " << derajatKelembaban[i]
+                        cout << "\t\t\t\t  " << rulesCount+1 <<".IF KELEMBABAN = " << derajatKelembaban[i]
                         << " AND SUHU = " << derajatSuhu[j]
                         << " AND KEASAMAN = " << derajatKeasaman[k]
                         << " THEN KESUBURAN = " << kondisiHasilRule[tempCount]

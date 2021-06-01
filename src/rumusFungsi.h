@@ -16,7 +16,7 @@ void trapesiumKanan(float d, float c, float x, float *result){
 }
 
 void centroidMethodMamdani(int banyakSample, float pengaliSubur, float pengaliKurangSubur, float *hasilDefuzzifikasi, float *hasilPembilang, float *hasilPenyebut){
-    float pengaliTengah[100], titikSampleTengah[100];
+    float pengaliTengah[100] = {}, titikSampleTengah[100] = {};
     int sampleCountSubur = 0, sampleCountKurangSubur = 0, titikSample = 0, delta = 0;
     int tempCount = 0;
 
